@@ -46,11 +46,11 @@ node('master'){
     
         stage('6. Uploading Image To Nexus'){
             withCredentials([usernamePassword(credentialsId: 'Nexus-Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh label: '', script: '''docker login -u $USERNAME -p $PASSWORD 192.168.0.162:8082 
-                                         docker tag java-app:${BUILD_ID} 192.168.0.162:8082/java-app:${BUILD_ID}
-                                         docker push 192.168.0.162:8082/java-app:${BUILD_ID}
-                                         docker rmi $(docker images --filter=reference="192.168.0.162:8082/java-app*" -q) -f
-                                         docker logout 192.168.0.162'''
+                sh label: '', script: '''docker login -u $USERNAME -p $PASSWORD 192.168.0.14:8082 
+                                         docker tag java-app:${BUILD_ID} 192.168.0.14:8082/java-app:${BUILD_ID}
+                                         docker push 192.168.0.14:8082/java-app:${BUILD_ID}
+                                         docker rmi $(docker images --filter=reference="192.168.0.14:8082/java-app*" -q) -f
+                                         docker logout 192.168.0.14'''
             }    
         }
 
