@@ -26,12 +26,11 @@ node('master'){
         }
     
         stage('2. Building'){
-            sh label: '', script: "mvn clean package" 
+            sh label: '', script:  'mvn clean package'
         }
     
         stage('3. Analyzing'){
-            /* sh label: '', script: '''cd ${WORKSPACE}
-                                      mvn verify sonar:sonar''' */
+            sh label: '', script: 'mvn verify sonar:sonar'
         }
     
         stage('4. Building Dockerfile'){
